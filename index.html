@@ -4,200 +4,323 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lebenslauf von Eliseo Kringels</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Grundlegendes Styling für Lesbarkeit */
+        /* Grundlegendes Layout und Farben */
+        :root {
+            --hauptfarbe: #007bff;
+            --dunkel-blau: #0056b3;
+            --text-dunkel: #333;
+            --text-mittel: #555;
+            --text-hell: #777;
+            --hintergrund-hell: #f8f9fa;
+            --container-hintergrund: #ffffff;
+            --rahmenfarbe: #e9ecef;
+            --schatten-leicht: rgba(0, 0, 0, 0.08);
+            --schrift-haupt: 'Roboto', sans-serif;
+            --schrift-titel: 'Montserrat', sans-serif;
+        }
+        
+        html { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: inherit; }
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: var(--schrift-haupt);
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        h1, h2, h3 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-            border-bottom: none;
-            color: #34495e;
-            margin-bottom: 10px;
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-            color: #555;
-        }
-        .contact-info span {
-            margin: 0 10px;
-        }
-
-        section {
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style: none; /* Entfernt die Standardpunkte */
             padding: 0;
+            background-color: var(--hintergrund-hell);
+            color: var(--text-dunkel);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
         }
-
+        
+        .lebenslauf-container {
+            max-width: 900px;
+            width: 95%;
+            margin: 40px auto;
+            background-color: var(--container-hintergrund);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--schatten-leicht);
+        }
+        
+        /* Kopfbereich (Header) */
+        .kopfbereich {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--rahmenfarbe);
+        }
+        
+        .zurueck-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--hauptfarbe);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .zurueck-link:hover {
+            color: var(--dunkel-blau);
+            text-decoration: underline;
+        }
+        
+        .kopfbereich h1 {
+            font-family: var(--schrift-titel);
+            font-size: 3.2em;
+            color: var(--text-dunkel);
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+        }
+        
+        .kopfbereich .untertitel {
+            font-size: 1.2em;
+            color: var(--text-mittel);
+            margin-top: -5px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .kontakt-info {
+            font-size: 0.95em;
+            color: var(--text-mittel);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .kontakt-info span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon-telefon::before { content: "📞 "; }
+        .icon-email::before { content: "✉️ "; }
+        .icon-adresse::before { content: "📍 "; }
+        
+        /* Hauptinhalt */
+        .hauptinhalt {
+            padding-top: 15px;
+        }
+        
+        .abschnitt {
+            margin-bottom: 30px;
+        }
+        
+        .abschnitt h2 {
+            font-family: var(--schrift-titel);
+            font-size: 1.8em;
+            color: var(--hauptfarbe);
+            border-bottom: 2px solid var(--hauptfarbe);
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+        
+        .eintrag {
+            margin-bottom: 25px;
+            padding-left: 10px;
+            border-left: 3px solid var(--rahmenfarbe);
+        }
+        .eintrag:last-child {
+            margin-bottom: 0;
+        }
+        
+        .eintrag h3 {
+            font-family: var(--schrift-haupt);
+            font-size: 1.3em;
+            color: var(--text-dunkel);
+            margin: 0 0 5px 0;
+            font-weight: 600;
+        }
+        
+        .metainfo {
+            font-size: 1em;
+            color: var(--text-mittel);
+            margin: 0 0 5px 0;
+        }
+        
+        .zeitraum {
+            font-size: 0.9em;
+            color: var(--text-hell);
+            margin: 0 0 15px 0;
+            display: block;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        
         ul li {
-            margin-bottom: 10px;
             position: relative;
-            padding-left: 20px; /* Platz für benutzerdefinierte Punkte */
+            padding-left: 25px;
+            margin-bottom: 8px;
+            color: var(--text-dunkel);
         }
-
+        
         ul li::before {
-            content: "•"; /* Benutzerdefinierte Punkte */
-            color: #3498db;
+            content: "\2022";
+            color: var(--hauptfarbe);
             font-weight: bold;
             position: absolute;
             left: 0;
+            top: 0;
+            font-size: 1.2em;
+            line-height: 1.6;
         }
-
-        .job-title, .education-degree {
-            font-weight: bold;
-            color: #3498db;
+        
+        .kompetenzen li strong {
+            color: var(--text-dunkel);
         }
-
-        .company-name, .school-name {
-            font-style: italic;
-            color: #555;
-        }
-
-        .dates {
+        
+        /* Fußbereich (Footer) */
+        .fußbereich {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--rahmenfarbe);
             font-size: 0.9em;
-            color: #777;
-            margin-top: 5px;
-            margin-bottom: 10px;
+            color: var(--text-hell);
         }
-
-        p {
-            margin-bottom: 15px;
+        
+        /* Responsive Anpassungen */
+        @media (max-width: 768px) {
+            .lebenslauf-container {
+                margin: 20px auto;
+                padding: 25px;
+                width: 98%;
+            }
+            .kopfbereich h1 { font-size: 2.5em; }
+            .kopfbereich .untertitel { font-size: 1.1em; }
+            .kontakt-info { flex-direction: column; gap: 10px; }
+            .abschnitt h2 { font-size: 1.6em; margin-bottom: 20px; }
+            .eintrag h3 { font-size: 1.2em; }
+            ul li { padding-left: 20px; margin-bottom: 6px; }
+            ul li::before { font-size: 1em; }
+        }
+        
+        @media (max-width: 480px) {
+            .lebenslauf-container { padding: 15px; margin: 10px auto; }
+            .kopfbereich h1 { font-size: 2em; }
+            .kopfbereich .untertitel { font-size: 1em; }
+            .abschnitt h2 { font-size: 1.4em; margin-bottom: 15px; }
+            .eintrag { border-left: 2px solid var(--rahmenfarbe); padding-left: 5px; }
+            .eintrag h3 { font-size: 1.1em; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <div class="lebenslauf-container">
+        <header class="kopfbereich">
+            <a href="https://e-kringels.github.io/" class="zurueck-link">&larr; Zurück zum Portfolio</a>
             <h1>Eliseo Kringels</h1>
-            <div class="contact-info">
-                <span>0157 27028043</span> |
-                <span>Kringels@gmx.de</span> |
-                <span>Friedrich-Wilhelm-Straße 53, Bremen</span>
+            <p class="untertitel">Ihr Profil für Anwendungsentwicklung</p>
+            <div class="kontakt-info">
+                <span><i class="icon-telefon"></i> 0157 27028043</span>
+                <span><i class="icon-email"></i> Kringels@gmx.de</span>
+                <span><i class="icon-adresse"></i> Friedrich-Wilhelm-Straße 53, Bremen</span>
             </div>
         </header>
 
-        <section>
-            <h2>ZIELSETZUNG</h2>
-            <p>Ich bin eine zuverlässige und gewissenhafte Person mit ausgeprägtem technischem Verständnis und einem hohen Auffassungsvermögen. Mit Sorgfalt und Verantwortungsbewusstsein möchte ich mein technisches Know-how gezielt kundenorientiert unter Beweis stellen und präzise sowie lösungsorientiert die bestmöglichen Ergebnisse erzielen. Meine praktische Erfahrung in der Logistik möchte ich nun durch eine spezialisierte SAP-Schulung vertiefen, um aktiv an der Digitalisierung von Geschäftsprozessen mitzuwirken.</p>
-        </section>
+        <main class="hauptinhalt">
+            <section class="abschnitt">
+                <h2>ZIELSETZUNG</h2>
+                <p>
+                    Ich bin eine zuverlässige und gewissenhafte Person mit ausgeprägtem technischen Verständnis. Meine bisherige Berufserfahrung hat mich in meinem Wunsch bestärkt, meine Leidenschaft für die IT gezielt einzusetzen. Ich bin hochmotiviert, meine Kenntnisse in der Softwareentwicklung zu vertiefen und aktiv an der Entwicklung effizienter und lösungsorientierter Anwendungen mitzuwirken.
+                </p>
+            </section>
 
-        <section>
-            <h2>AUSBILDUNG & SCHULISCHE BILDUNG</h2>
-            <div>
-                <p><span class="education-degree">Ausbildung zum Hotelfachmann (Nicht abgeschlossen)</span><br>
-                <span class="school-name">Parkhotel</span> | Bremen<br>
-                <span class="dates">August 2022 – März 2023</span></p>
-            </div>
-            <div>
-                <p><span class="education-degree">Mittlere Berufsausbildungsreife</span><br>
-                <span class="school-name">Erwachsenen Schule</span> | Bremen<br>
-                <span class="dates">August 2018 – März 2020</span></p>
-            </div>
-            <div>
-                <p><span class="education-degree">Ausbildung zum Uhrmacher (Nicht abgeschlossen)</span><br>
-                <span class="school-name">G16</span> | Hamburg<br>
-                <span class="dates">August 2015 – Februar 2016</span></p>
-            </div>
-            <div>
-                <p><span class="education-degree">Erweiterter Bildungsabschluss (EBBR)</span><br>
-                <span class="school-name">Wilhelm-Kaisen-Schule</span> | Bremen<br>
-                <span class="dates">August 2000 – Februar 2015</span></p>
-            </div>
-        </section>
+            <section class="abschnitt">
+                <h2>AUSBILDUNG & SCHULISCHE BILDUNG</h2>
+                <div class="eintrag">
+                    <h3>Ausbildung zum Hotelfachmann (Nicht abgeschlossen)</h3>
+                    <p class="metainfo"><span>Parkhotel</span> | Bremen</p>
+                    <p class="zeitraum">August 2022 – März 2023</p>
+                </div>
+                <div class="eintrag">
+                    <h3>Mittlere Berufsausbildungsreife</h3>
+                    <p class="metainfo"><span>Erwachsenen Schule</span> | Bremen</p>
+                    <p class="zeitraum">August 2018 – März 2020</p>
+                </div>
+                <div class="eintrag">
+                    <h3>Erweiterter Bildungsabschluss (EBBR)</h3>
+                    <p class="metainfo"><span>Wilhelm-Kaisen-Schule</span> | Bremen</p>
+                    <p class="zeitraum">August 2000 – Februar 2015</p>
+                </div>
+            </section>
 
-        <section>
-            <h2>BERUFSERFAHRUNG</h2>
-            <div>
-                <p><span class="job-title">Service und Logistik</span><br>
-                <span class="company-name">Domino’s</span> | Bremen<br>
-                <span class="dates">Januar 2025 – aktuell</span></p>
-                <ul>
-                    <li>Zubereitung und Auslieferung von Bestellungen</li>
-                    <li>Koordination von Abläufen im Store und Lager</li>
-                    <li>Sicherstellung eines reibungslosen Servicebetriebs</li>
-                </ul>
-            </div>
-            <div>
-                <p><span class="job-title">Spediteur Quereinsteiger</span><br>
-                <span class="company-name">DHL Freight</span> | Bremen<br>
-                <span class="dates">April 2023 – Dezember 2024</span></p>
-                <ul>
-                    <li>Koordination und Planung von Transportabläufen</li>
-                    <li>Überwachung von Lieferterminen und Frachtkosten</li>
-                    <li>Enge Zusammenarbeit mit Lieferanten und Spediteuren zur Sicherstellung effizienter Logistikprozesse</li>
-                </ul>
-            </div>
-            <div>
-                <p><span class="job-title">Servicekraft</span><br>
-                <span class="company-name">PerLease</span> | Bremen<br>
-                <span class="dates">Mai 2020 – August 2022</span></p>
-                <ul>
-                    <li>Gästebetreuung und Serviceeinsätze bei Veranstaltungen</li>
-                    <li>Sicherstellung eines reibungslosen Ablaufs im Servicebereich</li>
-                    <li>Unterstützung beim Auf- und Abbau sowie bei der Vorbereitung von Veranstaltungsflächen</li>
-                </ul>
-            </div>
-            <div>
-                <p><span class="job-title">Mitarbeiter Logistik</span><br>
-                <span class="company-name">BLG LOGISTICS</span> | Bremen<br>
-                <span class="dates">März 2016 – August 2018</span></p>
-                <ul>
-                    <li>Mitarbeiter im Lager mit Erfahrung in der Wareneingangskontrolle</li>
-                    <li>Sicherstellung eines reibungslosen Warenflusses</li>
-                    <li>Mitarbeit bei der Bestandspflege und Inventur</li>
-                </ul>
-            </div>
-        </section>
+            <section class="abschnitt">
+                <h2>BERUFSERFAHRUNG</h2>
+                <div class="eintrag">
+                    <h3>Spediteur Quereinsteiger</h3>
+                    <p class="metainfo"><span>DHL Freight</span> | Bremen</p>
+                    <p class="zeitraum">April 2023 – Juli 2025</p>
+                    <ul>
+                        <li>Koordination und Planung von Transportabläufen</li>
+                        <li>Überwachung von Lieferterminen und Frachtkosten</li>
+                        <li>Enge Zusammenarbeit mit Lieferanten und Spediteuren zur Sicherstellung effizienter Logistikprozesse</li>
+                    </ul>
+                </div>
+                <div class="eintrag">
+                    <h3>Servicekraft</h3>
+                    <p class="metainfo"><span>PerLease</span> | Bremen</p>
+                    <p class="zeitraum">Mai 2020 – August 2022</p>
+                    <ul>
+                        <li>Gästebetreuung und Serviceeinsätze bei Veranstaltungen</li>
+                        <li>Sicherstellung eines reibungslosen Ablaufs im Servicebereich</li>
+                        <li>Unterstützung beim Auf- und Abbau sowie bei der Vorbereitung von Veranstaltungsflächen</li>
+                    </ul>
+                </div>
+                <div class="eintrag">
+                    <h3>Mitarbeiter Logistik</h3>
+                    <p class="metainfo"><span>BLG LOGISTICS</span> | Bremen</p>
+                    <p class="zeitraum">März 2016 – August 2018</p>
+                    <ul>
+                        <li>Unterstützung im Büromanagement und in der Datenpflege</li>
+                        <li>Sicherstellung eines reibungslosen Warenflusses</li>
+                        <li>Bürotätigkeiten in den Bereichen Bestands- und Inventurmanagement</li>
+                    </ul>
+                </div>
+            </section>
 
-        <section>
-            <h2>KOMPETENZEN</h2>
-            <ul>
-                <li><strong>Technisches Verständnis:</strong> Ausgeprägtes Verständnis für mechanische und technische Abläufe, schnelles Einarbeiten in neue Systeme.</li>
-                <li><strong>Prozessorientierung:</strong> Erfahrung in der Optimierung und Einhaltung von Arbeitsabläufen im Logistikbereich.</li>
-                <li><strong>Kommunikationsfähigkeit:</strong> Klare und effektive Kommunikation mit Kollegen, Lieferanten und Kunden.</li>
-                <li><strong>Verantwortungsbewusstsein:</strong> Hohes Maß an Sorgfalt und Zuverlässigkeit, insbesondere im Umgang mit Maschinen und Vorschriften.</li>
-                <li><strong>Zeitmanagement:</strong> Effiziente Planung und Durchführung von Aufgaben zur Einhaltung von Fristen.</li>
-                <li><strong>Lösungsorientierung:</strong> Fähigkeit, Herausforderungen analytisch anzugehen und praktikable Lösungen zu finden.</li>
-            </ul>
-        </section>
+            <section class="abschnitt">
+                <h2>KOMPETENZEN</h2>
+                <ul class="kompetenzen">
+                    <li><strong>Technisches Verständnis:</strong> Ausgeprägtes Verständnis für mechanische und technische Abläufe, schnelles Einarbeiten in neue Systeme.</li>
+                    <li><strong>Prozessorientierung:</strong> Erfahrung in der Optimierung und Einhaltung von Arbeitsabläufen im Logistikbereich.</li>
+                    <li><strong>Kommunikationsfähigkeit:</strong> Klare und effektive Kommunikation mit Kollegen, Lieferanten und Kunden.</li>
+                    <li><strong>Verantwortungsbewusstsein:</strong> Hohes Maß an Sorgfalt und Zuverlässigkeit.</li>
+                    <li><strong>Zeitmanagement:</strong> Effiziente Planung und Durchführung von Aufgaben zur Einhaltung von Fristen.</li>
+                    <li><strong>Lösungsorientierung:</strong> Fähigkeit, Herausforderungen analytisch anzugehen und praktikable Lösungen zu finden.</li>
+                </ul>
+            </section>
 
-        <section>
-            <h2>SPRACHKENNTNISSE</h2>
-            <ul>
-                <li>Deutsch: Muttersprache</li>
-                <li>Spanisch: Muttersprache</li>
-                <li>Englisch: Fortgeschritten</li>
-            </ul>
-        </section>
+            <section class="abschnitt">
+                <h2>SPRACHKENNTNISSE</h2>
+                <ul>
+                    <li>Deutsch: Muttersprache</li>
+                    <li>Spanisch: Muttersprache</li>
+                    <li>Englisch: Fortgeschritten</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="fußbereich">
+            <p>&copy; 2025 Eliseo Kringels. Alle Rechte vorbehalten.</p>
+        </footer>
     </div>
 </body>
 </html>
